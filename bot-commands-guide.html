@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary SEO Meta Tags -->
+  <title>Bot Setup & Management Commands | Nafij Rahaman – Full Stack Developer</title>
+  <meta name="title" content="Bot Setup & Management Commands | Nafij Rahaman – Full Stack Developer" />
+  <meta name="description" content="A complete guide to bot setup and management commands by Nafij Rahaman (Nafijur Rahaman, Nafijurrahaman, Nafij Pro, nafijthepro, nafijprobd). Full Stack Developer specializing in React, Next.js, Node.js, MongoDB & automation tools." />
+  <meta name="keywords" content="Nafij Rahaman, Nafijur Rahaman, Nafijurrahaman, nafijrahaman, Nafij Pro, nafijthepro, nafijprobd, Nafiz Rahaman, NafizRahamān, Full Stack Developer, bot commands, Node.js bot, PM2, proot-distro, Ubuntu, nohup, automation, web developer Bangladesh, Magura Polytechnic Institute" />
+  <meta name="author" content="Nafij Rahaman" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="generator" content="Nafij Rahaman – Full Stack Developer" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bot Setup & Management Commands | Nafij Rahaman" />
+  <meta property="og:description" content="Professional bot setup & management command reference by Nafij Rahaman (Nafijur Rahaman, Nafij Pro), Full Stack Developer from Bangladesh specializing in modern web technologies and automation." />
+  <meta property="og:site_name" content="Nafij Rahaman – Developer Portfolio" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bot Setup & Management Commands | Nafij Rahaman" />
+  <meta name="twitter:description" content="Complete bot command guide by Nafij Rahaman (nafijthepro, nafijprobd), Full Stack Developer. React, Next.js, Node.js, MongoDB, Firebase." />
+  <meta name="twitter:creator" content="@nafijthepro" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://nafijrahaman.dev/bot-commands" />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nafij Rahaman",
+    "alternateName": ["Nafijur Rahaman","Nafijurrahaman","nafijrahaman","Nafij Pro","nafijthepro","nafijprobd","Nafiz Rahaman","NafizRahamān"],
+    "description": "Full Stack Developer specializing in React, Next.js, Node.js, MongoDB, Firebase, and modern web technologies. Currently studying at Magura Polytechnic Institute.",
+    "jobTitle": "Full Stack Developer",
+    "knowsAbout": ["React","Next.js","Node.js","MongoDB","Firebase","Web Automation","AI-powered solutions","Bot Development"],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Magura Polytechnic Institute"
+    },
+    "sameAs": [
+      "https://github.com/nafijrahaman",
+      "https://linkedin.com/in/nafijrahaman"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Bot Setup & Management Commands Guide",
+    "description": "A comprehensive reference guide covering bot setup, background running, process management, and PM2 auto-restart commands for Node.js bots on Ubuntu.",
+    "author": {
+      "@type": "Person",
+      "name": "Nafij Rahaman"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Nafij Rahaman"
+    },
+    "articleSection": "Development Tools",
+    "keywords": "bot commands, Node.js, PM2, proot-distro, Ubuntu, nohup, automation"
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface-2: #1c2333;
+      --neu-shadow-dark: #080c12;
+      --neu-shadow-light: #1e2738;
+      --glass-bg: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.07);
+      --accent: #00f5a0;
+      --accent-2: #00d9f5;
+      --accent-3: #7c3aed;
+      --accent-glow: rgba(0,245,160,0.15);
+      --accent2-glow: rgba(0,217,245,0.1);
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #484f58;
+      --code-bg: #0a0e14;
+      --red: #ff4757;
+      --yellow: #ffd32a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,245,160,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,160,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+      animation: gridPulse 8s ease-in-out infinite;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 20% 20%, rgba(0,245,160,0.04) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 80%, rgba(0,217,245,0.04) 0%, transparent 50%),
+                  radial-gradient(ellipse at 50% 50%, rgba(124,58,237,0.03) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+      animation: bgFloat 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes gridPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes bgFloat {
+      0% { transform: translate(0,0) rotate(0deg); }
+      100% { transform: translate(3%,3%) rotate(2deg); }
+    }
+
+    .wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── HEADER ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        8px 8px 24px var(--neu-shadow-dark),
+        -4px -4px 16px var(--neu-shadow-light);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
+      animation: scanLine 3s linear infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% -20%, rgba(0,245,160,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    @keyframes scanLine {
+      0% { transform: scaleX(0); transform-origin: left; }
+      50% { transform: scaleX(1); transform-origin: left; }
+      50.01% { transform: scaleX(1); transform-origin: right; }
+      100% { transform: scaleX(0); transform-origin: right; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,245,160,0.08);
+      border: 1px solid rgba(0,245,160,0.2);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 50%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      filter: drop-shadow(0 0 30px rgba(0,245,160,0.3));
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 28px;
+    }
+
+    .hero-sub span {
+      color: var(--accent-2);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .tag {
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #a78bfa;
+      letter-spacing: 0.5px;
+    }
+
+    .tag.green {
+      background: rgba(0,245,160,0.08);
+      border-color: rgba(0,245,160,0.2);
+      color: var(--accent);
+    }
+
+    .tag.blue {
+      background: rgba(0,217,245,0.08);
+      border-color: rgba(0,217,245,0.2);
+      color: var(--accent-2);
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+      margin: 20px 0 0;
+    }
+
+    .hero-dev-info {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 400;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--glass-border), transparent);
+    }
+
+    /* ── COMMAND CARD ── */
+    .cmd-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 22px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      box-shadow:
+        6px 6px 18px var(--neu-shadow-dark),
+        -3px -3px 10px var(--neu-shadow-light);
+      animation: fadeSlideIn 0.5s ease both;
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:nth-child(1)  { animation-delay: 0.05s; }
+    .card:nth-child(2)  { animation-delay: 0.10s; }
+    .card:nth-child(3)  { animation-delay: 0.15s; }
+    .card:nth-child(4)  { animation-delay: 0.20s; }
+    .card:nth-child(5)  { animation-delay: 0.25s; }
+    .card:nth-child(6)  { animation-delay: 0.30s; }
+    .card:nth-child(7)  { animation-delay: 0.35s; }
+    .card:nth-child(8)  { animation-delay: 0.40s; }
+    .card:nth-child(9)  { animation-delay: 0.45s; }
+    .card:nth-child(10) { animation-delay: 0.50s; }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,245,160,0.2);
+      box-shadow:
+        8px 8px 28px var(--neu-shadow-dark),
+        -4px -4px 14px var(--neu-shadow-light),
+        0 0 30px rgba(0,245,160,0.05);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      border-radius: 3px 0 0 3px;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .step-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--accent);
+      background: rgba(0,245,160,0.08);
+      border: 1px solid rgba(0,245,160,0.2);
+      border-radius: 6px;
+      padding: 3px 8px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .card h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.5px;
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 400;
+      margin-bottom: 14px;
+      padding-left: 2px;
+      line-height: 1.5;
+    }
+
+    .cmd-block {
+      background: var(--code-bg);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 2px 2px 8px rgba(0,0,0,0.4), inset -1px -1px 4px rgba(255,255,255,0.02);
+    }
+
+    .cmd-block::before {
+      content: '$';
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    .cmd-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: #79c0ff;
+      flex: 1;
+      word-break: break-all;
+      line-height: 1.5;
+    }
+
+    .copy-btn {
+      background: rgba(0,245,160,0.1);
+      border: 1px solid rgba(0,245,160,0.2);
+      border-radius: 8px;
+      padding: 7px 14px;
+      cursor: pointer;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+    }
+
+    .copy-btn:hover {
+      background: rgba(0,245,160,0.18);
+      border-color: var(--accent);
+      box-shadow: 0 0 16px rgba(0,245,160,0.2);
+      transform: scale(1.03);
+    }
+
+    .copy-btn:active { transform: scale(0.96); }
+
+    .copy-btn.copied {
+      background: rgba(0,245,160,0.25);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Accent variations */
+    .card.danger .step-num {
+      color: var(--red);
+      background: rgba(255,71,87,0.08);
+      border-color: rgba(255,71,87,0.2);
+    }
+    .card.danger:hover { border-color: rgba(255,71,87,0.25); }
+    .card.danger::before { background: linear-gradient(180deg, var(--red), #ff6b81); }
+    .card.danger .cmd-block::before { color: var(--red); }
+    .card.danger .copy-btn { color: var(--red); background: rgba(255,71,87,0.08); border-color: rgba(255,71,87,0.2); }
+    .card.danger .copy-btn:hover { background: rgba(255,71,87,0.18); border-color: var(--red); box-shadow: 0 0 16px rgba(255,71,87,0.2); }
+
+    .card.special .step-num {
+      color: var(--accent-2);
+      background: rgba(0,217,245,0.08);
+      border-color: rgba(0,217,245,0.2);
+    }
+    .card.special:hover { border-color: rgba(0,217,245,0.25); }
+    .card.special::before { background: linear-gradient(180deg, var(--accent-2), #0099ff); }
+    .card.special .cmd-block::before { color: var(--accent-2); }
+    .card.special .copy-btn { color: var(--accent-2); background: rgba(0,217,245,0.08); border-color: rgba(0,217,245,0.2); }
+    .card.special .copy-btn:hover { background: rgba(0,217,245,0.18); border-color: var(--accent-2); box-shadow: 0 0 16px rgba(0,217,245,0.2); }
+
+    .card.purple .step-num {
+      color: #a78bfa;
+      background: rgba(124,58,237,0.1);
+      border-color: rgba(124,58,237,0.25);
+    }
+    .card.purple:hover { border-color: rgba(124,58,237,0.3); }
+    .card.purple::before { background: linear-gradient(180deg, #7c3aed, #a78bfa); }
+    .card.purple .cmd-block::before { color: #a78bfa; }
+    .card.purple .copy-btn { color: #a78bfa; background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.25); }
+    .card.purple .copy-btn:hover { background: rgba(124,58,237,0.2); border-color: #a78bfa; box-shadow: 0 0 16px rgba(124,58,237,0.25); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 24px;
+      background: var(--surface-2);
+      border: 1px solid rgba(0,245,160,0.3);
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--accent);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(0,245,160,0.1);
+      transform: translateY(80px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast-icon {
+      width: 18px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 10px;
+      color: #000;
+      font-weight: 900;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 60px;
+      text-align: center;
+      padding: 30px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .footer-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .footer-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 12px;
+      line-height: 1.6;
+    }
+
+    .footer-aliases {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+      line-height: 2;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(0,245,160,0.3); }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .wrapper { padding: 20px 12px 60px; }
+      .hero { padding: 36px 18px; }
+      .cmd-block { flex-wrap: wrap; }
+      .copy-btn { width: 100%; text-align: center; }
+      .hero h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- HERO -->
+    <header class="hero" role="banner">
+      <div class="hero-badge">LIVE SYSTEM</div>
+      <h1>🤖 Bot Command Terminal</h1>
+      <p class="hero-sub">Setup & Management Reference by <span>Nafij Rahaman</span></p>
+
+      <div class="hero-tags">
+        <span class="tag green">Node.js</span>
+        <span class="tag green">PM2</span>
+        <span class="tag blue">Ubuntu</span>
+        <span class="tag blue">proot-distro</span>
+        <span class="tag">Full Stack Dev</span>
+        <span class="tag">Automation</span>
+        <span class="tag">Firebase</span>
+        <span class="tag">MongoDB</span>
+      </div>
+
+      <div class="divider"></div>
+      <p class="hero-dev-info">
+        Built by <strong style="color:var(--text-secondary)">Nafij Rahaman</strong> (Nafijur Rahaman · Nafij Pro · nafijthepro · nafijprobd) —
+        Full Stack Developer · Magura Polytechnic Institute · Bangladesh
+      </p>
+    </header>
+
+    <!-- COMMANDS -->
+    <p class="section-title">Setup Commands</p>
+
+    <main class="cmd-grid" id="commands" aria-label="Bot management commands">
+
+      <article class="card">
+        <div class="card-header">
+          <span class="step-num">STEP 01</span>
+          <h2>Enter Ubuntu</h2>
+        </div>
+        <p>Log into the Ubuntu proot environment to begin managing your bot.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd1">proot-distro login ubuntu</span>
+          <button class="copy-btn" onclick="copyText('cmd1', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <span class="step-num">STEP 02</span>
+          <h2>Go to Bot Directory</h2>
+        </div>
+        <p>Navigate into your bot's working folder where all scripts and configs are located.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd2">cd ~/bot</span>
+          <button class="copy-btn" onclick="copyText('cmd2', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <span class="step-num">STEP 03</span>
+          <h2>Sync Updated Files</h2>
+        </div>
+        <p>Copy updated account credentials, config, and environment files from your device storage into the bot directory.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd3">cp /storage/emulated/0/bot/{account.txt,account.dev.txt,.env} ~/bot/</span>
+          <button class="copy-btn" onclick="copyText('cmd3', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <span class="step-num">STEP 04</span>
+          <h2>Run Bot</h2>
+        </div>
+        <p>Start the bot in the foreground to see live output and debug logs in the terminal.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd4">node index.js</span>
+          <button class="copy-btn" onclick="copyText('cmd4', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+      <article class="card special">
+        <div class="card-header">
+          <span class="step-num">STEP 05</span>
+          <h2>Keep Bot Alive — nohup</h2>
+        </div>
+        <p>Run the bot in the background using nohup so it keeps running even after closing the terminal session.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd5">nohup node index.js &amp;</span>
+          <button class="copy-btn" onclick="copyText('cmd5', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <span class="step-num">STEP 06</span>
+          <h2>Check Running Processes</h2>
+        </div>
+        <p>List all active Node.js processes to verify your bot is running and find its process ID.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd6">ps aux | grep node</span>
+          <button class="copy-btn" onclick="copyText('cmd6', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+      <article class="card danger">
+        <div class="card-header">
+          <span class="step-num">STEP 07</span>
+          <h2>Stop Bot</h2>
+        </div>
+        <p>Terminate all running Node.js bot processes immediately. Use with caution in production.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd7">pkill node</span>
+          <button class="copy-btn" onclick="copyText('cmd7', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- PM2 SECTION -->
+    <p class="section-title" style="margin-top:36px;">PM2 — Process Manager</p>
+
+    <div class="cmd-grid">
+
+      <article class="card purple">
+        <div class="card-header">
+          <span class="step-num">PM2 — 01</span>
+          <h2>Install PM2 & Start Bot</h2>
+        </div>
+        <p>Install PM2 globally and launch the bot with automatic restart on crash — the recommended production setup.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd8">npm install -g pm2 &amp;&amp; pm2 start index.js --name bot</span>
+          <button class="copy-btn" onclick="copyText('cmd8', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+      <article class="card purple">
+        <div class="card-header">
+          <span class="step-num">PM2 — 02</span>
+          <h2>Restart Bot</h2>
+        </div>
+        <p>Gracefully restart the bot managed by PM2 without losing the process configuration.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd9">pm2 restart bot</span>
+          <button class="copy-btn" onclick="copyText('cmd9', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+      <article class="card purple">
+        <div class="card-header">
+          <span class="step-num">PM2 — 03</span>
+          <h2>View Live Logs</h2>
+        </div>
+        <p>Stream real-time logs of your bot's activity, errors, and output directly in the terminal.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd10">pm2 logs bot</span>
+          <button class="copy-btn" onclick="copyText('cmd10', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+      <article class="card purple">
+        <div class="card-header">
+          <span class="step-num">PM2 — 04</span>
+          <h2>Stop Bot (PM2)</h2>
+        </div>
+        <p>Stop the bot process managed by PM2 while keeping it listed in the process manager.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd11">pm2 stop bot</span>
+          <button class="copy-btn" onclick="copyText('cmd11', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+      <article class="card purple">
+        <div class="card-header">
+          <span class="step-num">PM2 — 05</span>
+          <h2>List All Processes</h2>
+        </div>
+        <p>Display a status table of all PM2-managed processes including uptime, memory, and CPU usage.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd12">pm2 list</span>
+          <button class="copy-btn" onclick="copyText('cmd12', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+      <article class="card purple">
+        <div class="card-header">
+          <span class="step-num">PM2 — 06</span>
+          <h2>Save & Enable Auto-Start</h2>
+        </div>
+        <p>Save the current PM2 process list and generate a startup script so the bot auto-starts on system reboot.</p>
+        <div class="cmd-block">
+          <span class="cmd-text" id="cmd13">pm2 save &amp;&amp; pm2 startup</span>
+          <button class="copy-btn" onclick="copyText('cmd13', this)" aria-label="Copy command">COPY</button>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <p class="footer-name">Nafij Rahaman</p>
+      <p class="footer-desc">
+        Full Stack Developer specializing in React, Next.js, Node.js, MongoDB, Firebase & modern automation tools.
+        Currently studying at Magura Polytechnic Institute. Building AI-powered solutions and scalable digital experiences.
+      </p>
+      <p class="footer-aliases">
+        Known as: Nafijur Rahaman · Nafijurrahaman · nafijrahaman · Nafij Pro · nafijthepro · nafijprobd · Nafiz Rahaman · NafizRahamān
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="toast-icon">✓</div>
+    <span id="toast-msg">Copied to clipboard!</span>
+  </div>
+
+  <script>
+    const REAL_COMMANDS = {
+      cmd5: 'nohup node index.js &',
+      cmd8: 'npm install -g pm2 && pm2 start index.js --name bot',
+      cmd13: 'pm2 save && pm2 startup'
+    };
+
+    function copyText(id, btn) {
+      const el = document.getElementById(id);
+      const text = REAL_COMMANDS[id] || el.innerText.trim();
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Copied: ' + (text.length > 40 ? text.slice(0,40)+'…' : text));
+        if (btn) {
+          const orig = btn.textContent;
+          btn.textContent = 'COPIED ✓';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = orig;
+            btn.classList.remove('copied');
+          }, 2000);
+        }
+      }).catch(() => {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('Copied!');
+      });
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+  </script>
+
+</body>
+</html>
